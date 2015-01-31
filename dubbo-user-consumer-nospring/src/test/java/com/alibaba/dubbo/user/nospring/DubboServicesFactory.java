@@ -30,8 +30,6 @@ public class DubboServicesFactory {
                     reference.setRegistry(registry);
                     reference.setInterface(interfaceName);
 
-                    // 用string 做key是为了根据ServiceName 分开配置 ReferenceConfig的配置选项
-
                     return reference.get();
                 }
             });
