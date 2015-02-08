@@ -1,4 +1,4 @@
-package com.alibaba.dubbo.user.nospring;
+package com.alibaba.dubbo.user.nospring.consumer;
 
 import com.alibaba.dubbo.user.api.UserService;
 
