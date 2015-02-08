@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://code.alibabatech.com/schema/dubbo https://raw.githubusercontent.com/dangdangdotcom/dubbox/master/dubbo-config/dubbo-config-spring/src/main/resources/META-INF/dubbo.xsd">
+
+    <dubbo:application name="dubbo-user-rest-provider" owner="lishunli" organization="alibaba" />
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+
+    <dubbo:protocol name="rest" port="8080" contextpath="services" server="tomcat" threads="500" accepts="500" extension="com.alibaba.dubbo.user.rest.provider.MyValidationExceptionMapper" />
+
+    <bean id="userRestService" class="com.alibaba.dubbo.user.rest.provider.UserRestServiceImpl" />
+
+    <dubbo:service ref="userRestService" protocol="rest" timeout="5000" retries="0" validation="true" interface="com.alibaba.dubbo.user.rest.provider.UserRestService" />
+
+
+</beans>

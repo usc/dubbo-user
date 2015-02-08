@@ -15,6 +15,7 @@
     <modules>
         <module>dubbo-user-api</module>
         <module>dubbo-user-provider</module>
+        <module>dubbo-user-rest-provider</module>        
         <module>dubbo-user-consumer</module>        
         <module>dubbo-user-nospring-consumer</module>
     </modules>
