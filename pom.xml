@@ -18,6 +18,7 @@
         <module>dubbo-user-rest-provider</module>        
         <module>dubbo-user-consumer</module>        
         <module>dubbo-user-nospring-consumer</module>
+        <module>dubbo-user-nospring-web</module>
     </modules>
 
     <build>
