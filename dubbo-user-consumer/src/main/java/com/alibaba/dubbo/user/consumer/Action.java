@@ -1,6 +1,6 @@
 package com.alibaba.dubbo.user.consumer;
 
-import com.alibaba.dubbo.rpc.RpcContext;
+import com.alibaba.dubbo.user.api.CommonBroadcastService;
 import com.alibaba.dubbo.user.api.UserService;
 
 /**
@@ -9,9 +9,14 @@ import com.alibaba.dubbo.user.api.UserService;
  */
 public class Action {
     private UserService userService;
+    private CommonBroadcastService commonBroadcastService;
 
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    public void setCommonBroadcastService(CommonBroadcastService commonBroadcastService) {
+        this.commonBroadcastService = commonBroadcastService;
     }
 
     public void start() throws Exception {
@@ -19,8 +24,12 @@ public class Action {
         // while (true) {
         // System.out.println(userService.getUser((i++) + ""));
         // }
-        for (int i = 0; i < 10; i++) {
-            System.out.println(RpcContext.getContext().getLocalAddressString() + " ==> " + userService.getUser(i + ""));
-        }
+        // for (int i = 0; i < 10; i++) {
+        // System.out.println(RpcContext.getContext().getLocalAddressString() + " ==> " + userService.getUser(i + ""));
+        // }
+
+        System.out.println(userService.getUser("1"));
+
+        commonBroadcastService.refreshCache();
     }
 }

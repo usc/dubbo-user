@@ -5,12 +5,14 @@
 
     <dubbo:application name="demo-consumer" owner="lishunli" organization="alibaba" />
     <dubbo:registry address="zookeeper://127.0.0.1:2181" />
-    <dubbo:consumer timeout="2000" retries="0"/>
+    <dubbo:consumer timeout="2000" retries="0" />
 
     <dubbo:reference id="userService" interface="com.alibaba.dubbo.user.api.UserService" />
+    <dubbo:reference id="commonBroadcastService" interface="com.alibaba.dubbo.user.api.CommonBroadcastService" />
 
     <bean class="com.alibaba.dubbo.user.consumer.Action" init-method="start">
         <property name="userService" ref="userService" />
+        <property name="commonBroadcastService" ref="commonBroadcastService" />
     </bean>
 
 </beans>
