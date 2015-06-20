@@ -1,4 +1,4 @@
-package com.alibaba.dubbo.user.provider;
+package com.alibaba.dubbo.user.provider.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

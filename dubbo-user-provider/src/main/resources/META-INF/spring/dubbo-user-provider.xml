@@ -7,10 +7,10 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181" />
     <dubbo:protocol name="dubbo" serialization="kryo" port="-1" />
 
-    <bean id="userService" class="com.alibaba.dubbo.user.provider.UserServiceImpl" />
+    <bean id="userService" class="com.alibaba.dubbo.user.provider.service.UserServiceImpl" />
     <dubbo:service ref="userService" protocol="dubbo" timeout="2000" retries="0" interface="com.alibaba.dubbo.user.api.UserService" />
 
-    <bean id="commonBroadcastService" class="com.alibaba.dubbo.user.provider.CommonBroadcastServiceImpl" />
+    <bean id="commonBroadcastService" class="com.alibaba.dubbo.user.provider.service.CommonBroadcastServiceImpl" />
     <dubbo:service ref="commonBroadcastService" protocol="dubbo" timeout="2000" interface="com.alibaba.dubbo.user.api.CommonBroadcastService" cluster="broadcast" />
 
 </beans>
