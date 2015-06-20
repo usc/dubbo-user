@@ -18,7 +18,7 @@ public class DubboServicesFactory {
                 @Override
                 public Object load(String interfaceName) throws Exception {
                     ApplicationConfig application = new ApplicationConfig();
-                    application.setName("dubbo-user-consumer-nospring");
+                    application.setName("dubbo-user-nospring-web");
                     application.setOwner("lishunli");
                     application.setOrganization("alibaba");
 
