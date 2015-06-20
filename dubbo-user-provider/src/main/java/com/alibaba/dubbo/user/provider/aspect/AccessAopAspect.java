@@ -13,8 +13,8 @@ import com.google.common.base.Stopwatch;
  *
  * @author Shunli
  */
-public class PerformanceInterceptor {
-    private Logger log = LoggerFactory.getLogger(getClass());
+public class AccessAopAspect {
+    private Logger log = LoggerFactory.getLogger("access");
 
     public Object invoke(ProceedingJoinPoint jp) throws Throwable {
         Stopwatch sw = Stopwatch.createStarted();
@@ -25,7 +25,7 @@ public class PerformanceInterceptor {
         } finally {
             RpcContext context = RpcContext.getContext();
             String request = jp.getSignature().toShortString() + Arrays.toString(jp.getArgs());
-            log.info("[1]channel:{} -> {}, request:{}, respone:{}, elapsed:{}", context.getRemoteAddressString(), context.getLocalAddressString(), request, proceed, sw);
+            log.debug("[1]channel:{} -> {}, request:{}, respone:{}, elapsed:{}", context.getRemoteAddressString(), context.getLocalAddressString(), request, proceed, sw);
         }
 
         return proceed;

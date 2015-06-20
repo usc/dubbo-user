@@ -20,9 +20,9 @@
 
     <aop:aspectj-autoproxy />
 
-    <bean id="performanceInterceptor" class="com.alibaba.dubbo.user.provider.aspect.PerformanceInterceptor" />
+    <bean id="accessAopAspect" class="com.alibaba.dubbo.user.provider.aspect.AccessAopAspect" />
     <aop:config>
-        <aop:aspect ref="performanceInterceptor">
+        <aop:aspect ref="accessAopAspect">
             <aop:pointcut id="controller" expression="execution(* com.alibaba.dubbo.user.provider.service.*.*(..))" />
             <aop:around pointcut-ref="controller" method="invoke" />
         </aop:aspect>

@@ -15,7 +15,7 @@ import com.google.common.base.Stopwatch;
 @Aspect
 @Component("systemAdvisor")
 public class SystemAdvisor {
-    private Logger log = LoggerFactory.getLogger(getClass());
+    private Logger log = LoggerFactory.getLogger("access");
 
     @Around("execution(* com.alibaba.dubbo.user.provider.service.*.*(..))")
     public Object executeControllerNormalFlow(ProceedingJoinPoint jp) throws Throwable {
@@ -27,7 +27,7 @@ public class SystemAdvisor {
         } finally {
             RpcContext context = RpcContext.getContext();
             String request = jp.getSignature().toShortString() + Arrays.toString(jp.getArgs());
-            log.info("[2]channel:{} -> {}, request:{}, respone:{}, elapsed:{}", context.getRemoteAddressString(), context.getLocalAddressString(), request, respone, sw);
+            log.debug("[2]channel:{} -> {}, request:{}, respone:{}, elapsed:{}", context.getRemoteAddressString(), context.getLocalAddressString(), request, respone, sw);
         }
 
         return respone;
