@@ -1,6 +1,6 @@
 package com.alibaba.dubbo.user.nospring.consumer;
 
-import com.alibaba.dubbo.user.api.UserService;
+import com.alibaba.dubbo.user.api.service.UserService;
 
 public class NoSpringConsumerBootstrap {
 

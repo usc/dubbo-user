@@ -1,7 +1,7 @@
 package com.alibaba.dubbo.user.consumer;
 
-import com.alibaba.dubbo.user.api.CommonBroadcastService;
-import com.alibaba.dubbo.user.api.UserService;
+import com.alibaba.dubbo.user.api.service.CommonBroadcastService;
+import com.alibaba.dubbo.user.api.service.UserService;
 
 /**
  *

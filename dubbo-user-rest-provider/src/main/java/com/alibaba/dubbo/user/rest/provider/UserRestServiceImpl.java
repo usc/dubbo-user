@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
-import com.alibaba.dubbo.user.api.User;
+import com.alibaba.dubbo.user.api.domain.User;
 
 /**
  *

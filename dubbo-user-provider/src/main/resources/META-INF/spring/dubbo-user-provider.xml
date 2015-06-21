@@ -9,9 +9,9 @@
     <dubbo:protocol id="dubbo2" name="dubbo" serialization="kryo" port="20881" />
 
     <bean id="userService" class="com.alibaba.dubbo.user.provider.service.UserServiceImpl" />
-    <dubbo:service ref="userService" protocol="dubbo1" timeout="2000" retries="0" interface="com.alibaba.dubbo.user.api.UserService" />
+    <dubbo:service ref="userService" protocol="dubbo1" timeout="2000" retries="0" interface="com.alibaba.dubbo.user.api.service.UserService" />
 
     <bean id="commonBroadcastService" class="com.alibaba.dubbo.user.provider.service.CommonBroadcastServiceImpl" />
-    <dubbo:service ref="commonBroadcastService" protocol="dubbo1,dubbo2" timeout="2000" interface="com.alibaba.dubbo.user.api.CommonBroadcastService" cluster="broadcast" />
+    <dubbo:service ref="commonBroadcastService" protocol="dubbo1,dubbo2" timeout="2000" interface="com.alibaba.dubbo.user.api.service.CommonBroadcastService" cluster="broadcast" />
 
 </beans>
