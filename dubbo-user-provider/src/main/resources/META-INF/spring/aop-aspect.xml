@@ -18,7 +18,9 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 
-    <aop:aspectj-autoproxy />
+    <description>Aop Aspect配置 </description>
+
+<!--     <aop:aspectj-autoproxy /> -->
 
     <bean id="accessAdvisor" class="com.alibaba.dubbo.user.provider.aspect.AccessAdvisor" />
     <aop:config>
