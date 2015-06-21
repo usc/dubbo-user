@@ -20,7 +20,7 @@ public class CommonBroadcastServiceImpl implements CommonBroadcastService {
         log.warn("test {}", "warning");
         log.error("test logback", new RuntimeException("xxxx"));
 
-        throw new RuntimeException("test dubbo exception");
+        // throw new RuntimeException("test dubbo exception");
     }
 
 }
