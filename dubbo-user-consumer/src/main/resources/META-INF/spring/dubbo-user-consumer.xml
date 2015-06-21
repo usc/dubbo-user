@@ -7,7 +7,7 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181" />
     <dubbo:consumer timeout="2000" retries="0" />
 
-    <dubbo:reference id="userService" interface="com.alibaba.dubbo.user. .UserService" />
+    <dubbo:reference id="userService" interface="com.alibaba.dubbo.user.api.service.UserService" />
     <dubbo:reference id="commonBroadcastService" interface="com.alibaba.dubbo.user.api.service.CommonBroadcastService" />
 
     <bean class="com.alibaba.dubbo.user.consumer.Action" init-method="start">
