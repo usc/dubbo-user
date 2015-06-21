@@ -13,7 +13,7 @@ import com.google.common.base.Stopwatch;
  *
  * @author Shunli
  */
-public class AccessAopAspect {
+public class AccessAdvisor {
     private Logger log = LoggerFactory.getLogger("access");
 
     public Object invoke(ProceedingJoinPoint jp) throws Throwable {
@@ -24,6 +24,7 @@ public class AccessAopAspect {
             proceed = jp.proceed(); // execute
         } finally {
             RpcContext context = RpcContext.getContext();
+            System.out.println(jp.getSignature().getName());
             String request = jp.getSignature().toShortString() + Arrays.toString(jp.getArgs());
             log.debug("[1]channel:{} -> {}, request:{}, respone:{}, elapsed:{}", context.getRemoteAddressString(), context.getLocalAddressString(), request, proceed, sw);
         }

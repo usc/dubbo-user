@@ -20,11 +20,11 @@
 
     <aop:aspectj-autoproxy />
 
-    <bean id="accessAopAspect" class="com.alibaba.dubbo.user.provider.aspect.AccessAopAspect" />
+    <bean id="accessAdvisor" class="com.alibaba.dubbo.user.provider.aspect.AccessAdvisor" />
     <aop:config>
-        <aop:aspect ref="accessAopAspect">
-            <aop:pointcut id="controller" expression="execution(* com.alibaba.dubbo.user.provider.service.*.*(..))" />
-            <aop:around pointcut-ref="controller" method="invoke" />
+        <aop:aspect ref="accessAdvisor">
+            <aop:pointcut id="servicePointcut" expression="execution(* com.alibaba.dubbo.user.provider.service.*.*(..))" />
+            <aop:around pointcut-ref="servicePointcut" method="invoke" />
         </aop:aspect>
     </aop:config>
 </beans>
