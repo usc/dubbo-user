@@ -1,4 +1,4 @@
-package com.alibaba.dubbo.user.api;
+package com.alibaba.dubbo.user.api.service;
 
 /**
  *

@@ -5,8 +5,8 @@ import javax.annotation.Resource;
 import org.apache.commons.configuration.XMLConfiguration;
 
 import com.alibaba.dubbo.rpc.RpcContext;
-import com.alibaba.dubbo.user.api.User;
-import com.alibaba.dubbo.user.api.UserService;
+import com.alibaba.dubbo.user.api.domain.User;
+import com.alibaba.dubbo.user.api.service.UserService;
 
 /**
  *

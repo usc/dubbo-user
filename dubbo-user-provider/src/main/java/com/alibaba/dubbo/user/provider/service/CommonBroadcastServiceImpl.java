@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.dubbo.rpc.RpcContext;
-import com.alibaba.dubbo.user.api.CommonBroadcastService;
+import com.alibaba.dubbo.user.api.service.CommonBroadcastService;
 
 /**
  *
