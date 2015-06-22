@@ -31,6 +31,16 @@
                 <maxFileSize>1GB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>NEUTRAL</onMismatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <ONMISMATCH>DENY</ONMISMATCH>
+        </filter>
         <encoder>
             <pattern>${defaultPattern}</pattern>
         </encoder>
@@ -57,9 +67,6 @@
     <appender name="dubbo_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>/usr/local/dubbo/user-20880/logs/dubbo_error.log</File>
         <Append>true</Append>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>ERROR</level>
-        </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <maxIndex>100</maxIndex>
             <FileNamePattern>/usr/local/dubbo/user-20880/logs/dubbo_error.%i.log.zip</FileNamePattern>
@@ -67,6 +74,9 @@
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>100MB</MaxFileSize>
         </triggeringPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
         <encoder>
             <pattern>${defaultPattern}</pattern>
         </encoder>
