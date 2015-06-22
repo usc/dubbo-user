@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="defaultPattern" value="%date %-5level %logger{36} - %msg%n" />
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${defaultPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="access" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/usr/local/dubbo/user-20880/logs/access/access.log</File>
+        <Append>true</Append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/usr/local/dubbo/user-20880/logs/access/access.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1GB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${defaultPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="user_provider" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/usr/local/dubbo/user-20880/logs/user/provider.log</File>
+        <Append>true</Append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/usr/local/dubbo/user-20880/logs/user/provider.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1GB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${defaultPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="user_provider_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/usr/local/dubbo/user-20880/logs/user/provider_error.log</File>
+        <Append>true</Append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <maxIndex>100</maxIndex>
+            <FileNamePattern>/usr/local/dubbo/user-20880/logs/user/provider_error.%i.log.zip</FileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>100MB</MaxFileSize>
+        </triggeringPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>${defaultPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="dubbo_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/usr/local/dubbo/user-20880/logs/dubbo_error.log</File>
+        <Append>true</Append>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <maxIndex>100</maxIndex>
+            <FileNamePattern>/usr/local/dubbo/user-20880/logs/dubbo_error.%i.log.zip</FileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>100MB</MaxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>${defaultPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="access" level="DEBUG" additivity="false">
+        <appender-ref ref="access" />
+    </logger>
+
+    <logger name="com.alibaba.dubbo.user" level="INFO" additivity="false">
+        <appender-ref ref="user_provider" />
+        <appender-ref ref="user_provider_error" />
+    </logger>
+
+    <logger name="com.alibaba.dubbo" level="ERROR" additivity="false">
+        <appender-ref ref="dubbo_error" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="console" />
+    </root>
+</configuration>
