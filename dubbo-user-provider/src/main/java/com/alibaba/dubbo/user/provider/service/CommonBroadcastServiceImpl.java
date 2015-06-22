@@ -17,7 +17,7 @@ public class CommonBroadcastServiceImpl implements CommonBroadcastService {
     public void refreshCache() {
         System.out.println(RpcContext.getContext().getLocalAddressString() + " CommonBroadcastService.refreshCache() invoked");
         log.info("{} invoked", "CommonBroadcastService.refreshCache()");
-
+        log.warn("test {}", "warning");
         log.error("test logback", new RuntimeException("xxxx"));
 
         throw new RuntimeException("test dubbo exception");
