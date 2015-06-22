@@ -79,11 +79,12 @@
         <!-- <property name="filters" value="mergeStat" /> -->
     </bean>
 
+    <context:property-placeholder ignore-unresolvable="true" location="classpath*:/dataSource.properties" />
+
     <bean id="db1DataSource" parent="abstractDataSource">
-        <!-- 基本属性 url、user、password -->
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/db1?useUnicode=true&amp;characterEncoding=utf-8" />
-        <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="url" value="${db1.url}" />
+        <property name="username" value="${db1.username}" />
+        <property name="password" value="${db1.password}" />
     </bean>
 
     <bean id="db1JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -91,10 +92,9 @@
     </bean>
 
     <bean id="db2DataSource" parent="abstractDataSource">
-        <!-- 基本属性 url、user、password -->
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/db2?useUnicode=true&amp;characterEncoding=utf-8" />
-        <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="url" value="${db2.url}" />
+        <property name="username" value="${db2.username}" />
+        <property name="password" value="${db2.password}" />
     </bean>
 
 </beans>
