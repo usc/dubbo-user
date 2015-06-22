@@ -24,8 +24,14 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 // JPA 基类的标识
 @MappedSuperclass
 public abstract class IdEntity {
+    private Long id;
 
-    protected Long id;
+    public IdEntity() {
+    }
+
+    public IdEntity(Long id) {
+        this.id = id;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

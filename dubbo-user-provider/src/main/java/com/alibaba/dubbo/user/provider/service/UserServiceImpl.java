@@ -11,6 +11,7 @@ import com.alibaba.dubbo.user.api.domain.User;
 import com.alibaba.dubbo.user.api.service.UserService;
 import com.alibaba.dubbo.user.provider.dao.db1.Task1Dao;
 import com.alibaba.dubbo.user.provider.dao.db2.Task2Dao;
+import com.alibaba.dubbo.user.provider.dao.jdbc.TaskJdbcDao;
 import com.alibaba.dubbo.user.provider.model.Task1;
 import com.alibaba.dubbo.user.provider.model.Task2;
 
@@ -29,6 +30,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private Task2Dao task2Dao;
 
+    @Autowired
+    private TaskJdbcDao taskJdbcDao;
+
     @Override
     public User getUser(String id) {
         System.out.println(RpcContext.getContext().getLocalAddressString() + " UserService.getUser() invoked");
@@ -41,6 +45,8 @@ public class UserServiceImpl implements UserService {
         System.out.println(task1Dao.findByTitleStartingWith("t1_C"));
         System.out.println(task1Dao.findOne(1L));
         System.out.println(task1Dao.findAll());
+
+        taskJdbcDao.test();
 
         User user = new User(id, "name" + id);
         return user;

@@ -23,6 +23,12 @@ public class Task2 extends IdEntity {
         this.description = description;
     }
 
+    public Task2(Long id, String title, String description) {
+        super(id);
+        this.title = title;
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }
