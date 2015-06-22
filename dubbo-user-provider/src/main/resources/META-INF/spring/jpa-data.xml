@@ -16,7 +16,7 @@
     <bean id="abstractEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" abstract="true">
         <property name="packagesToScan" value="com.alibaba.dubbo.user.provider.model" />
         <property name="jpaVendorAdapter">
-            <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
             </bean>
         </property>
@@ -84,6 +84,10 @@
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/db1?useUnicode=true&amp;characterEncoding=utf-8" />
         <property name="username" value="root" />
         <property name="password" value="root" />
+    </bean>
+
+    <bean id="db1JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="db1DataSource" />
     </bean>
 
     <bean id="db2DataSource" parent="abstractDataSource">
