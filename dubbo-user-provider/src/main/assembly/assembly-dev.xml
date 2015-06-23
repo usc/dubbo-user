@@ -17,7 +17,7 @@
             <fileMode>0644</fileMode>
         </fileSet>
         <fileSet>
-            <directory>src/main/resources</directory>
+            <directory>src/test/resources</directory>
             <outputDirectory>conf</outputDirectory>
             <fileMode>0644</fileMode>
         </fileSet>

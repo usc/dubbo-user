@@ -7,7 +7,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <dubbo.version>2.8.4-SNAPSHOT</dubbo.version>
+        <dubbo.version>2.8.4</dubbo.version>
     </properties>
 
     <dependencies>
@@ -105,7 +105,8 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>3.2.9.RELEASE</version>
+            <!-- <version>3.2.9.RELEASE</version> -->
+            <version>4.0.9.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -120,11 +121,11 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty</artifactId>
-            <version>3.10.0.Final</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>io.netty</groupId> -->
+        <!-- <artifactId>netty</artifactId> -->
+        <!-- <version>3.10.0.Final</version> -->
+        <!-- </dependency> -->
 
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
@@ -195,6 +196,20 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.0.9.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -211,10 +226,21 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*.properties</exclude>
+                        <exclude>**/*.xml</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>unpack</id>
+                        <id>copy-dubbo-assembly</id>
                         <phase>package</phase>
                         <goals>
                             <goal>unpack</goal>
@@ -233,10 +259,11 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    <descriptor>src/main/assembly/${assembly.file}</descriptor>
                 </configuration>
                 <executions>
                     <execution>
@@ -250,4 +277,28 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>assembly-pro</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <assembly.file>assembly.xml</assembly.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>assembly-dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <assembly.file>assembly-dev.xml</assembly.file>
+            </properties>
+        </profile>
+    </profiles>
 </project>

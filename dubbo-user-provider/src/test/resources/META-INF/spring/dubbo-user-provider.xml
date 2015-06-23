@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://code.alibabatech.com/schema/dubbo https://raw.githubusercontent.com/dangdangdotcom/dubbox/master/dubbo-config/dubbo-config-spring/src/main/resources/META-INF/dubbo.xsd">
+
+    <description>Dubbo公共配置 </description>
+
+    <dubbo:application name="dubbo-user-provider" owner="lishunli" organization="alibaba" />
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+    <dubbo:protocol id="dubbo1" name="dubbo" serialization="kryo" port="20880" />
+    <dubbo:protocol id="dubbo2" name="dubbo" serialization="kryo" port="20881" />
+
+    <bean id="userService" class="com.alibaba.dubbo.user.provider.service.UserServiceImpl" />
+    <dubbo:service ref="userService" protocol="dubbo1" timeout="2000" retries="0" interface="com.alibaba.dubbo.user.api.service.UserService" />
+
+    <bean id="commonBroadcastService" class="com.alibaba.dubbo.user.provider.service.CommonBroadcastServiceImpl" />
+    <dubbo:service ref="commonBroadcastService" protocol="dubbo1,dubbo2" timeout="2000" interface="com.alibaba.dubbo.user.api.service.CommonBroadcastService" cluster="broadcast" />
+
+</beans>
