@@ -20,7 +20,7 @@
 
     <description>Aop Aspect配置 </description>
 
-<!--     <aop:aspectj-autoproxy /> -->
+<!--     <aop:aspectj-autoproxy proxy-target-class="true"/> -->
 
     <bean id="accessAdvisor" class="com.alibaba.dubbo.user.provider.aspect.AccessAdvisor" />
     <aop:config>
