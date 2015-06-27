@@ -87,7 +87,7 @@
         <property name="password" value="${db1.password}" />
     </bean>
 
-    <bean id="db1JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    <bean id="db1JdbcTemplate" class="com.alibaba.dubbo.user.provider.dao.jdbc.JdbcTemplate">
         <constructor-arg ref="db1DataSource" />
     </bean>
 

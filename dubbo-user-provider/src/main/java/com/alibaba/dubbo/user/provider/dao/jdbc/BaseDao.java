@@ -37,7 +37,7 @@ public abstract class BaseDao {
 
     protected JdbcTemplate getJdbcTemplate() {
         if (jdbcTemplate == null) {
-            jdbcTemplate = new JdbcTemplate(getDataSource());
+            jdbcTemplate = new com.alibaba.dubbo.user.provider.dao.jdbc.JdbcTemplate(getDataSource());
         }
 
         return jdbcTemplate;
